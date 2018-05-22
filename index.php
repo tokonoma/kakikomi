@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('America/New_York');
-session_name('hakushi');
+session_name('kakikomi');
 session_start();
 
 // Extend cookie life time by an amount of your liking
