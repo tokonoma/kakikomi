@@ -38,14 +38,14 @@ $(function(){
 
     //open nav
     $("#kaki-logo").click(function() {
-        $(".kakikomi nav").addClass('open');
+        $("#kakikomi-menu").addClass('open');
         $("#click-away").addClass('on');
         $("#kaki-logo").addClass('on');
     });
 
     //close nav
-    $(document).on("click", ".nav-logo", function(){
-        $(".kakikomi nav").removeClass('open');
+    $(document).on("click", ".menu-logo", function(){
+        $("#kakikomi-menu").removeClass('open');
         $("#click-away").removeClass('on');
         //match css transition for nav + 20
         setTimeout(function(){
@@ -54,7 +54,7 @@ $(function(){
     });
 
     $(document).on("click", "#click-away.on", function(){
-        $(".kakikomi nav").removeClass('open');
+        $("#kakikomi-menu").removeClass('open');
         $("#click-away").removeClass('on');
         //match css transition for nav + 20
         setTimeout(function(){

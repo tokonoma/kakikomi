@@ -15,12 +15,42 @@
 	</div>
 </header>
 
-<nav id="kakikomi-nav">
-	<div class="nav-inner">
-		<img class="nav-logo clickable" src="assets/images/kaki-logo-wht.svg">
-		MENU
+<nav class="tabs">
+	<div class="container">
+		<div class="row">
+			<div class="col-6 col-sm-4 offset-sm-2">
+				<div class="tab text-center">posts</div>
+			</div>
+			<div class="col-6 col-sm-4">
+				<div class="tab text-center active">write</div>
+			</div>
+		</div>
 	</div>
 </nav>
+
+<main class="kakikomi-write">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-8 offset-sm-2">
+				 <input type="text" id="title-input" class="title-input" aria-label="title input" placeholder="add a title for your post">
+				 <input class="invisible-input post-date" value="<?php echo date("M • d • Y"); ?>" placeholder="add a publish date">
+				 <textarea id="post-input" class="post-input" rows="3" placeholder="write your post here"></textarea>
+				 <div class="action-bar">
+				 	
+				 </div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<div id="kakikomi-menu">
+	<div class="menu-inner">
+		<img class="menu-logo clickable" src="assets/images/kaki-logo-wht.svg">
+		MENU
+	</div>
+</div>
+
+
 
 <div id="click-away"></div>
 

@@ -17,7 +17,7 @@
     <link href="assets/css/custom.css" rel="stylesheet">
 
     <!--web font-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900" rel="stylesheet">
 
     <!--[if lt IE 9]><script src=../assets/js/ie8-responsive-file-warning.js></script><![endif]-->
@@ -28,7 +28,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="apple-touch-startup-image" href="assets/images/hakushi-launch.png">
-    <!--<link href="/favicon.ico" rel="icon">-->
+    <link href="assets/images/kaki-logo-light@2x.png" rel="icon">
 </head>
 
 <body class="kakikomi">
