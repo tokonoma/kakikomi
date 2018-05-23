@@ -39,12 +39,15 @@ $(function(){
     //open nav
     $("#kaki-logo").click(function() {
         $(".kakikomi nav").addClass('open');
+        $("body").addClass('nav-open');
     });
 
     //close nav
     $(document).on("click", ".nav-logo", function(){
         $(".kakikomi nav").removeClass('open');
+        $("body").removeClass('nav-open');
     });
+
 })
 
 //reordering auto-ajax function

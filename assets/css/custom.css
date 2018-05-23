@@ -146,11 +146,11 @@ body.kakikomi{
 
 .kaki-logo{
 	transform: rotate(56deg);
-	transition: transform .1s;
 	opacity: 0.24;
 	position: absolute;
 	top: 24px;
 	right: 24px;
+	transition: transform .24s;
 }
 
 .kaki-logo:hover{
