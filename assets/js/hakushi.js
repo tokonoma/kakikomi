@@ -39,13 +39,27 @@ $(function(){
     //open nav
     $("#kaki-logo").click(function() {
         $(".kakikomi nav").addClass('open');
-        $("body").addClass('nav-open');
+        $("#click-away").addClass('on');
+        $("#kaki-logo").addClass('on');
     });
 
     //close nav
     $(document).on("click", ".nav-logo", function(){
         $(".kakikomi nav").removeClass('open');
-        $("body").removeClass('nav-open');
+        $("#click-away").removeClass('on');
+        //match css transition for nav + 20
+        setTimeout(function(){
+            $("#kaki-logo").removeClass('on');
+        }, 420);
+    });
+
+    $(document).on("click", "#click-away.on", function(){
+        $(".kakikomi nav").removeClass('open');
+        $("#click-away").removeClass('on');
+        //match css transition for nav + 20
+        setTimeout(function(){
+            $("#kaki-logo").removeClass('on');
+        }, 420);
     });
 
 })

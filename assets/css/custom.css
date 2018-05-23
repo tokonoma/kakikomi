@@ -150,10 +150,10 @@ body.kakikomi{
 	position: absolute;
 	top: 24px;
 	right: 24px;
-	transition: transform .24s;
+	transition: transform .32s;
 }
 
-.kaki-logo:hover{
+.kaki-logo:hover, .kaki-logo.on{
 	transform: rotate(0deg);
 	opacity: 1.0;
 }
@@ -162,10 +162,11 @@ body.kakikomi{
 	height: 100vh;
 	width: 0px;
 	position: fixed;
+	z-index: 10;
 	right: 0px;
 	top: 0px;
 	overflow: hidden;
-	transition: width .3s;
+	transition: width .4s;
 }
 
 .kakikomi nav.open{
@@ -185,6 +186,15 @@ body.kakikomi{
 
 .kakikomi .nav-logo{
 	float: right;
+}
+
+#click-away.on{
+	position: fixed;
+	z-index: 1;
+	height: 100vh;
+	width: 100vw;
+	top: 0px;
+	left: 0px;
 }
 
 

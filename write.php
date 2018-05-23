@@ -22,6 +22,8 @@
 	</div>
 </nav>
 
+<div id="click-away"></div>
+
 
 <!--BOTTOM-->
 
