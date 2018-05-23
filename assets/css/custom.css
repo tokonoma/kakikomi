@@ -146,7 +146,7 @@ body.kakikomi{
 
 .kaki-logo{
 	transform: rotate(56deg);
-	transition: transform .5s;
+	transition: transform .1s;
 	opacity: 0.24;
 	position: absolute;
 	top: 24px;
@@ -165,7 +165,7 @@ body.kakikomi{
 	right: 0px;
 	top: 0px;
 	overflow: hidden;
-	transition: width .5s;
+	transition: width .3s;
 }
 
 .kakikomi nav.open{
