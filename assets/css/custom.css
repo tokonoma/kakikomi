@@ -213,12 +213,19 @@ nav.tabs{
 
 nav .tab{
 	letter-spacing: 2px;
-	font-size: 14px;
+	font-size: 16px;
+	line-height: 44px;
 	text-transform: uppercase;
 	color: #88A2AA;
+	width: 100%;
+	display: block;
 }
 
-nav .tab.active{
+nav a.tab{
+	text-decoration: none;
+}
+
+nav .tab.active, nav .tab:hover{
 	border-bottom: solid 1px #C6D5DD;
 }
 
@@ -262,6 +269,42 @@ input.invisible-input{
 	border-radius: 4px;
 	resize: none;
 	height: 400px;
+	vertical-align: top;
+}
+
+.kakikomi-write .action-bar{
+	margin-top: 16px;
+}
+
+.kakikomi .btn.btn-link{
+	padding: 0px;
+	font-weight: 400;
+	margin-right: 48px;
+}
+
+.kakikomi .btn.btn-link:last-child{
+	margin-right: 0px;
+}
+
+.kakikomi .btn.btn-link.secondary{
+	color: #88A2AA;
+}
+
+.kakikomi .btn.btn-link.submit{
+	color: #3CAD89;
+}
+
+.kakikomi .btn.btn-link.clear{
+	font-weight: 300;
+}
+
+.kakikomi .badge{
+	display: inline-block;
+	border: solid 1px #88A2AA;
+	padding: 4px 8px;
+	border-radius: 24px;
+	font-size: 10px;
+	font-weight: 400;
 }
 
 
