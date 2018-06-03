@@ -140,6 +140,6 @@ else{
         }
     }
     else{
-        include('pages/landing.php');
+        include('pages/write.php');
     }
 }
