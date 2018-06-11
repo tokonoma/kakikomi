@@ -130,6 +130,9 @@ else{
                 case 'settings':
                     include('pages/user_settings.php');
                     break;
+                case 'write':
+                    include('pages/write.php');
+                    break;
                 default:
                     include('pages/404.php');
                     break;
@@ -140,6 +143,6 @@ else{
         }
     }
     else{
-        include('pages/write.php');
+        include('pages/posts.php');
     }
 }

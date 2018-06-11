@@ -259,6 +259,10 @@ input.invisible-input{
 	font-weight: 300;
 }
 
+.kakikomi-write .tags-icon{
+	margin: 12px 0px;
+}
+
 .kakikomi-write textarea.post-input{
 	width: 100%;
 	padding: 20px;

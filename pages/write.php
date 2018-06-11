@@ -1,3 +1,43 @@
+<?php
+
+try{
+
+    //postgres for prod
+    $db = new PDO($dsn);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+    //add row tool
+    // $input_email = "email@email.com";
+    // $input_password = "password";
+    // $password_store = password_hash($input_password, PASSWORD_BCRYPT);
+    // $input_fname = "Firsty";
+    // $input_lname = "Lasterson";
+    // $input_puid = 1;
+    // $input_name = "test";
+
+    //FYI $checkpass = password_verify($inputpass, $storedpass) yields t or f for pw check
+
+    // $insert = $db->prepare("INSERT INTO tags (puid, name) VALUES (?, ?)");
+    // $insertarray = array($input_puid, $input_name);
+    // $insert->execute($insertarray); 
+
+    //update row tool
+    // $update = $db->prepare("UPDATE tablename SET colname = :inputbind, anothercol = :secondbind WHERE uid = $uid");
+    // $update->bindParam(':inputbind', $newinput, PDO::PARAM_STR);
+    // $update->bindParam(':secondbind', $secondinput, PDO::PARAM_STR);
+    // $update->execute();
+
+    // close the database connection
+    $db = NULL;
+}
+catch(PDOException $e){
+    $statusMessage = $e->getMessage();
+    $statusType = "danger";
+}
+
+?>
+
 <!--HTML INCLUDES-->
 
 <?php include('views/header.php'); ?>
@@ -15,18 +55,7 @@
 	</div>
 </header>
 
-<nav class="tabs">
-	<div class="container">
-		<div class="row">
-			<div class="col-6 col-sm-4 offset-sm-2">
-				<a href="posts.php" class="tab text-center">posts</a>
-			</div>
-			<div class="col-6 col-sm-4">
-				<a href="write.php" class="tab text-center active">write</a>
-			</div>
-		</div>
-	</div>
-</nav>
+<?php include('views/tabs.php'); ?>
 
 <main class="kakikomi-write">
 	<div class="container">
@@ -34,6 +63,7 @@
 			<div class="col-12 col-sm-8 offset-sm-2">
 				<input type="text" id="title-input" class="title-input" aria-label="title input" placeholder="add a title for your post">
 				<input class="invisible-input post-date" value="<?php echo date("M • d • Y"); ?>" placeholder="add a publish date">
+				<div class="tags-icon d-inline-block float-right clickable"><img src="assets/images/tags.svg"></div>
 				<textarea id="post-input" class="post-input" rows="3" placeholder="write your post here"></textarea>
 				<div class="action-bar">
 					<a href="" class="btn btn-link clear secondary">CLEAR</a>
