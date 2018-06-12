@@ -1,47 +1,54 @@
+<?php
+
+try{
+
+    //postgres for prod
+    $db = new PDO($dsn);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $posts = $db->query("SELECT * FROM posts");
+
+    // close the database connection
+    $db = NULL;
+}
+catch(PDOException $e){
+    $statusMessage = $e->getMessage();
+    $statusType = "danger";
+}
+
+?>
+
 <!--HTML INCLUDES-->
 
-<?php include('views/header.php'); ?>
+<?php include('views/head.php'); ?>
 
-<header>
-	<div class="container">
-		<div class="row">
-			<div class="col-12 text-center position-relative">
-				<h1 id="test">kakikomi</h1>
-			</div>
-		</div>
-	</div>
-	<div id="kaki-logo" class="kaki-logo clickable">
-		<img src="assets/images/kaki-logo.svg">
-	</div>
-</header>
+<?php include('views/header.php'); ?>
 
 <?php include('views/tabs.php'); ?>
 
 <main class="kakikomi-posts">
 	<div class="container">
 		<div class="row">
-			<div class="col-12 col-sm-8 offset-sm-2">
-				hello world
+			<?php foreach($posts as $post): ?>
+			<div class="col-12 col-sm-8 offset-sm-2 post-item">
+				<h4><?php echo $post[title]; ?></h4>
+				<span class="post-date"><?php echo $post[date]; ?></span>
+				<p><?php echo $post[body]; ?></p>
+				<button type="button" class="btn btn-secondary delete-post-btn mb-3" data-toggle="modal" data-target="#delete-post-modal" data-uid="<?php echo $post['uid']?>" data-title="<?php echo $post['title']?>">delete</button>
 			</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </main>
 
-<div id="kakikomi-menu">
-	<div class="menu-inner">
-		<img class="menu-logo clickable" src="assets/images/kaki-logo-wht.svg">
-		MENU
-	</div>
-</div>
 
-
-
-<div id="click-away"></div>
-
+<?php include('views/menu.php'); ?>
 
 <!--BOTTOM-->
 
 <?php include('views/footer.php'); ?>
+
+<?php include('views/modals.php'); ?>
 
 <?php include('views/commonjs.php'); ?>
 

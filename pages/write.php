@@ -40,20 +40,9 @@ catch(PDOException $e){
 
 <!--HTML INCLUDES-->
 
-<?php include('views/header.php'); ?>
+<?php include('views/head.php'); ?>
 
-<header>
-	<div class="container">
-		<div class="row">
-			<div class="col-12 text-center position-relative">
-				<h1 id="test">kakikomi</h1>
-			</div>
-		</div>
-	</div>
-	<div id="kaki-logo" class="kaki-logo clickable">
-		<img src="assets/images/kaki-logo.svg">
-	</div>
-</header>
+<?php include('views/header.php'); ?>
 
 <?php include('views/tabs.php'); ?>
 
@@ -77,17 +66,8 @@ catch(PDOException $e){
 	</div>
 </main>
 
-<div id="kakikomi-menu">
-	<div class="menu-inner">
-		<img class="menu-logo clickable" src="assets/images/kaki-logo-wht.svg">
-		MENU
-	</div>
-</div>
 
-
-
-<div id="click-away"></div>
-
+<?php include('views/menu.php'); ?>
 
 <!--BOTTOM-->
 

@@ -1,4 +1,4 @@
-<?php include('views/header.php');?>
+<?php include('views/head.php');?>
 
 <div class="container">
     <div class="row">

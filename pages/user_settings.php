@@ -3,7 +3,7 @@
 
 <!--HTML INCLUDES-->
 
-<?php include('views/header.php'); ?>
+<?php include('views/head.php'); ?>
 
 <?php include('views/nav.php'); ?>
 

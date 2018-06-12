@@ -155,7 +155,7 @@ body.kakikomi{
 }
 
 .kaki-logo{
-	transform: rotate(56deg);
+	transform: rotate(-56deg);
 	opacity: 0.24;
 	position: absolute;
 	top: 24px;
@@ -309,6 +309,14 @@ input.invisible-input{
 	border-radius: 24px;
 	font-size: 10px;
 	font-weight: 400;
+}
+
+.kakikomi-posts .post-date{
+	font-size: 14px;
+}
+
+.kakikomi-posts .post-item{
+	border-bottom: solid 1px #C6D5DD;
 }
 
 

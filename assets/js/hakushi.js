@@ -36,6 +36,16 @@ $(function(){
         }
     });
 
+    //clears forms on modal closing, hides hidden elements and shows hidden elements that should be unhidden
+    //using .on() because we're using a class name... this will clear all forms on a page
+    $(".form-modal").on("hidden.bs.modal", function () {
+        $('form').trigger("reset");
+        //rehide any unhidden form elements or show any default non-hidden classes that GOT hidden
+        $('.form-hidden').addClass("hidden");
+        $(".default-show").removeClass("hidden");
+    });
+
+    //kakikomi js
     //open nav
     $("#kaki-logo").click(function() {
         $("#kakikomi-menu").addClass('open');
@@ -60,6 +70,15 @@ $(function(){
         setTimeout(function(){
             $("#kaki-logo").removeClass('on');
         }, 420);
+    });
+
+    //modal launch and submits
+    //--delete
+    $(document).on("click", ".delete-post-btn", function(){
+        var deleteUID = $(this).data('uid');
+        var deleteTitle = $(this).data('title');
+        $(".print-post-title").text(deleteTitle);
+        $('input[name="delete-uid"]').val(deductUID);
     });
 
 })
