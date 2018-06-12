@@ -81,6 +81,18 @@ $(function(){
         $('input[name="delete-uid"]').val(deductUID);
     });
 
+    //--delete--click to call js submit delete form
+    $("#delete-budget-submit-btn").click(function(){
+        if(($('#delete-you-sure-1').is(':checked'))&&($('#delete-you-sure-2').is(':checked'))&&($('#delete-you-sure-3').is(':checked'))){
+            submitJSForm("budget-delete-form");
+        }
+        else{
+            $("#must-check-to-delete").addClass("text-danger bold");
+            $("#must-check-to-delete").removeClass("text-success");
+            $("#must-check-to-delete").removeClass("d-none");
+        }
+    });
+
 })
 
 //reordering auto-ajax function

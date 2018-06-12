@@ -10,24 +10,24 @@
 			</div>
 			<div class="modal-body">
 				<p>Are you sure you want to <strong>DELETE</strong> post titled <strong><span class="print-post-title"></span></strong>?</p>
-                <p>Please check the following boxes to delete this budget</p>
-
-                <p id="must-check-to-delete" class="hidden form-hidden">Gotta check those checkboxes!!!</p>
+                <p id="must-check-to-delete" class="d-none form-hidden">
+                    Gotta check those checkboxes!!!
+                </p>
                 
                 <form id="budget-delete-form" method="POST" action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>">
                     <div class="checkbox">
                         <label>
-                            <input id="delete-you-sure-1" type="checkbox" name="delete-you-sure-1" value="1" class="delete-you-sure"> I want to delete this budget!
+                            <input id="delete-you-sure-1" type="checkbox" name="delete-you-sure-1" value="1" class="delete-you-sure"> I want to delete this post!
                         </label>
                     </div>
                    <div class="checkbox">
                         <label>
-                            <input id="delete-you-sure-2" type="checkbox" name="delete-you-sure-2" value="1" class="delete-you-sure"> I want to destroy all data concerning this budget!
+                            <input id="delete-you-sure-2" type="checkbox" name="delete-you-sure-2" value="1" class="delete-you-sure"> I want to lose every word of this post!
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input id="delete-you-sure-3" type="checkbox" name="delete-you-sure-3" value="1" class="delete-you-sure"> I want to never see this budget again!
+                            <input id="delete-you-sure-3" type="checkbox" name="delete-you-sure-3" value="1" class="delete-you-sure"> I want to never see this post again!
                         </label>
                     </div>
                     <input type="hidden" name="deduct-uid" value="">
@@ -35,8 +35,8 @@
                 </form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" id="delete-budget-submit-btn" name="delete-budget-submit-btn" class="btn btn-danger disabled-fade">Delete Forever</button>
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="delete-budget-submit-btn" name="delete-budget-submit-btn" class="btn btn-danger disabled-fade">Delete Forever</button>
 			</div>
 		</div>
 	</div>
