@@ -49,10 +49,6 @@ button:focus {
 	word-wrap:break-word;
 }
 
-.disabled-fade{
-	opacity: 0.7;
-}
-
 .semi-bold{
 	font-weight: 600;
 }

@@ -14,29 +14,33 @@
                     Gotta check those checkboxes!!!
                 </p>
                 
-                <form id="budget-delete-form" method="POST" action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>">
-                    <div class="checkbox">
-                        <label>
-                            <input id="delete-you-sure-1" type="checkbox" name="delete-you-sure-1" value="1" class="delete-you-sure"> I want to delete this post!
+                <form id="post-delete-form" method="POST" action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>">
+                    <div class="form-check">
+                        <input id="delete-you-sure-1" type="checkbox" name="delete-you-sure-1" value="1" class="form-check-input delete-you-sure">
+                        <label class="form-check-label" for="delete-you-sure-1">
+                            I want to delete this post!
                         </label>
                     </div>
-                   <div class="checkbox">
-                        <label>
-                            <input id="delete-you-sure-2" type="checkbox" name="delete-you-sure-2" value="1" class="delete-you-sure"> I want to lose every word of this post!
+                    <div class="form-check">
+                        <input id="delete-you-sure-2" type="checkbox" name="delete-you-sure-2" value="1" class="form-check-input delete-you-sure">
+                        <label class="form-check-label" for="delete-you-sure-2">
+                            I want to lose every word of this post!
                         </label>
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input id="delete-you-sure-3" type="checkbox" name="delete-you-sure-3" value="1" class="delete-you-sure"> I want to never see this post again!
+                    <div class="form-check">
+                        <input id="delete-you-sure-3" type="checkbox" name="delete-you-sure-3" value="1" class="form-check-input delete-you-sure">
+                        <label class="form-check-label" for="delete-you-sure-3">
+                            I never want to see this post again!
                         </label>
                     </div>
-                    <input type="hidden" name="deduct-uid" value="">
-                    <input type="hidden" name="budgetaction" value="delete">
+
+                    <input type="hidden" name="delete-uid" value="">
+                    <input type="hidden" name="post-action" value="delete">
                 </form>
 			</div>
 			<div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="delete-budget-submit-btn" name="delete-budget-submit-btn" class="btn btn-danger disabled-fade">Delete Forever</button>
+                <button type="button" id="delete-budget-submit-btn" name="delete-budget-submit-btn" class="btn btn-danger disabled">Delete Forever</button>
 			</div>
 		</div>
 	</div>

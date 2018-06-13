@@ -78,18 +78,33 @@ $(function(){
         var deleteUID = $(this).data('uid');
         var deleteTitle = $(this).data('title');
         $(".print-post-title").text(deleteTitle);
-        $('input[name="delete-uid"]').val(deductUID);
+        $('input[name="delete-uid"]').val(deleteUID);
     });
 
     //--delete--click to call js submit delete form
     $("#delete-budget-submit-btn").click(function(){
         if(($('#delete-you-sure-1').is(':checked'))&&($('#delete-you-sure-2').is(':checked'))&&($('#delete-you-sure-3').is(':checked'))){
-            submitJSForm("budget-delete-form");
+            submitJSForm("post-delete-form");
         }
         else{
             $("#must-check-to-delete").addClass("text-danger bold");
             $("#must-check-to-delete").removeClass("text-success");
             $("#must-check-to-delete").removeClass("d-none");
+        }
+    });
+
+    //--delete--check state of checks to remove disable
+    $('.delete-you-sure').change(function(){
+        if(($('#delete-you-sure-1').is(':checked'))&&($('#delete-you-sure-2').is(':checked'))&&($('#delete-you-sure-3').is(':checked'))){
+            $("#must-check-to-delete").addClass("text-success bold");
+            $("#must-check-to-delete").removeClass("text-danger");
+            $("#must-check-to-delete").removeClass("hidden");
+            $("#must-check-to-delete").text("Alright, now all you have to do is hit that button!");
+            $("#delete-budget-submit-btn").removeClass("disabled");
+        }
+        else{
+            $("#must-check-to-delete").removeClass("text-success");
+            $("#delete-budget-submit-btn").addClass("disabled-fade");
         }
     });
 

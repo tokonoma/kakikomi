@@ -1,8 +1,6 @@
 <?php
 
 try{
-
-    //postgres for prod
     $db = new PDO($dsn);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -14,6 +12,14 @@ try{
 catch(PDOException $e){
     $statusMessage = $e->getMessage();
     $statusType = "danger";
+}
+
+if(isset($_POST['post-action'])){ 
+	$postAction = $_POST['post-action'];
+}
+
+if(isset($_POST['delete-uid'])){ 
+	$deleteUID = $_POST['delete-uid'];
 }
 
 ?>
@@ -28,6 +34,8 @@ catch(PDOException $e){
 
 <main class="kakikomi-posts">
 	<div class="container">
+		<?php echo $deleteUID; ?>
+		<?php echo $postAction; ?>
 		<div class="row">
 			<?php foreach($posts as $post): ?>
 			<div class="col-12 col-sm-8 offset-sm-2 post-item">
