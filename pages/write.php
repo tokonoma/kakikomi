@@ -9,14 +9,6 @@ try{
 
     //add row tool
     // $input_email = "email@email.com";
-    // $input_password = "password";
-    // $password_store = password_hash($input_password, PASSWORD_BCRYPT);
-    // $input_fname = "Firsty";
-    // $input_lname = "Lasterson";
-    // $input_puid = 1;
-    // $input_name = "test";
-
-    //FYI $checkpass = password_verify($inputpass, $storedpass) yields t or f for pw check
 
     // $insert = $db->prepare("INSERT INTO tags (puid, name) VALUES (?, ?)");
     // $insertarray = array($input_puid, $input_name);

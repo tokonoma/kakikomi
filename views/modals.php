@@ -39,7 +39,7 @@
                 </form>
 			</div>
 			<div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-link text-secondary" data-dismiss="modal">Close</button>
                 <button type="button" id="delete-budget-submit-btn" name="delete-budget-submit-btn" class="btn btn-danger disabled">Delete Forever</button>
 			</div>
 		</div>
