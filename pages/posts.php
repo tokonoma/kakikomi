@@ -11,7 +11,8 @@ try{
 	        case 'delete':
 	        	if(isset($_POST['delete-uid'])){
 	            	$deleteUID = $_POST['delete-uid'];
-	            }
+				}
+				//$_SESSION['sessionalert'] = "loginfail";
 	            //header("Location: ".$_SERVER['REQUEST_URI']);
 	            //exit();
 	            break;
