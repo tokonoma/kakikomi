@@ -6,19 +6,7 @@ try{
     $db = new PDO($dsn);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
-    //add row tool
-    // $input_email = "email@email.com";
-
-    // $insert = $db->prepare("INSERT INTO tags (puid, name) VALUES (?, ?)");
-    // $insertarray = array($input_puid, $input_name);
-    // $insert->execute($insertarray); 
-
-    //update row tool
-    // $update = $db->prepare("UPDATE tablename SET colname = :inputbind, anothercol = :secondbind WHERE uid = $uid");
-    // $update->bindParam(':inputbind', $newinput, PDO::PARAM_STR);
-    // $update->bindParam(':secondbind', $secondinput, PDO::PARAM_STR);
-    // $update->execute();
+    
 
     // close the database connection
     $db = NULL;

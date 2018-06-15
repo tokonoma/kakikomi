@@ -57,6 +57,12 @@
                 $statusMessage = "New user successfully created";
                 $statusType = "success";
                 break;
+
+            /*post actions*/
+            case "postdeleted":
+                $statusMessage = "Posted deleted!";
+                $statusType = "success";
+                break;
         }
         unset($_SESSION['sessionalert']);
     }
