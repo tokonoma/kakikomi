@@ -108,6 +108,13 @@ $(function(){
         }
     });
 
+    //publish
+    //--save draft
+    $(document).on("click", ".save-draft-btn", function(){
+        $('input[name="published-input"]').val('0');
+        submitJSForm();
+    });
+
 })
 
 //reordering auto-ajax function

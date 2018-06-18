@@ -5,7 +5,7 @@ try{
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     //post actions
-    if(isset($_POST['post-action'])){ 
+    if(isset($_POST['post-action'])){
 	    $postAction = $_POST['post-action'];
 	    switch ($postAction){
 	        case 'delete':
