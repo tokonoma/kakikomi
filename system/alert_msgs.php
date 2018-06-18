@@ -63,6 +63,16 @@
                 $statusMessage = "Posted deleted!";
                 $statusType = "success";
                 break;
+
+            /*write actions*/    
+            case "postpublished":
+                $statusMessage = "Posted published!";
+                $statusType = "success";
+                break;
+            case "postsaved":
+                $statusMessage = "Draft saved!";
+                $statusType = "success";
+                break;
         }
         unset($_SESSION['sessionalert']);
     }

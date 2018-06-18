@@ -72,6 +72,18 @@ $(function(){
         }, 420);
     });
 
+    //write
+    //--save draft
+    $(document).on("click", ".save-draft-btn", function(){
+        $('input[name="published-input"]').val('0');
+        submitJSForm();
+    });
+
+    //--open tags
+    $("#tags-btn").click(function() {
+        $(".tags-container").toggleClass('open');
+    });
+
     //modal launch and submits
     //--delete
     $(document).on("click", ".delete-post-btn", function(){
@@ -106,13 +118,6 @@ $(function(){
             $("#must-check-to-delete").removeClass("text-success");
             $("#delete-budget-submit-btn").addClass("disabled-fade");
         }
-    });
-
-    //publish
-    //--save draft
-    $(document).on("click", ".save-draft-btn", function(){
-        $('input[name="published-input"]').val('0');
-        submitJSForm();
     });
 
 })

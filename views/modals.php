@@ -1,5 +1,5 @@
 <!--example modal-->
-<div class="modal" tabindex="-1" role="dialog" id="delete-post-modal">
+<div class="modal form-modal" tabindex="-1" role="dialog" id="delete-post-modal">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
