@@ -234,6 +234,10 @@ main{
 	color: #88A2AA;
 }
 
+.kakikomi input.tag-input::placeholder{
+	color: #2B4459;
+}
+
 .kakikomi-write input.title-input{
 	width: 100%;
 	padding: 14px 20px;
@@ -286,6 +290,26 @@ input.invisible-input{
 
 .kakikomi-write .tags-container.open{
 	height: 400px;
+}
+
+.kakikomi-write input.tag-input{
+	padding: 14px 20px;
+	color: #2B4459;
+	font-weight: 300;
+	background: #88A2AA;
+	border: none;
+	border-radius: 4px;
+	flex: 2;
+}
+
+.kakikomi-write .add-tag-btn{
+	padding: 14px 20px;
+	color: #2B4459;
+	font-weight: 300;
+	background: #88A2AA;
+	border: none;
+	border-radius: 4px;
+	margin-left: 8px;
 }
 
 .kakikomi-write textarea.post-input{

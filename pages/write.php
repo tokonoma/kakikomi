@@ -84,7 +84,7 @@ if(isset($getPost)){
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-sm-8 offset-sm-2">
-				<form id="js-submit-form" autocomplete="off" method="POST" action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>">
+				<form id="write-form" autocomplete="off" method="POST" action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>">
 					<input type="text" id="title-input" name="title-input" class="title-input" aria-label="title input" value="<?php echo $thisTitle; ?>" placeholder="add a title for your post">
 					<input class="invisible-input post-date" name="date-input" value="<?php echo $thisDate; ?>" placeholder="add a publish date">
 					<div id="tags-btn" class="d-inline-block float-right clickable">
@@ -94,7 +94,12 @@ if(isset($getPost)){
 						<textarea id="post-input" name="post-input" class="post-input" rows="3" placeholder="write your post here"><?php echo $thisBody; ?></textarea>
 						<div class="tags-container">
 							<div class="tags-inner">
-								hello
+								<div class="form-inline d-flex">
+									<input type="text" id="tag-input" class="tag-input" aria-label="tag input" value="" placeholder="Add tag">
+									<button type="button" class="add-tag-btn">ADD TAG</button>
+								</div>
+								<ul class="tag-list mt-4 list-unstyled">
+								</ul>
 							</div>
 						</div>
 					</div>
