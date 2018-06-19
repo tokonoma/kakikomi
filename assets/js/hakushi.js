@@ -93,7 +93,19 @@ $(function(){
         $(".tags-container").toggleClass('open');
     });
 
+    //tag-add-btn
+    $(document).on("click", ".add-tag-btn", function(){
+        var tagsArray = [];
+        var tagInput = $('input[id="tag-input"]').val();
+        tagsArray.push(tagInput);
+        $('input[id="tag-input"]').val('');
+        console.log("this is the tagsArray "+tagsArray;
 
+        // var ul = document.getElementById("list");
+        // var li = document.createElement("li");
+        // li.appendChild(document.createTextNode("Four"));
+        // ul.appendChild(li);
+    });
 
     //modal launch and submits
     //--delete
@@ -130,8 +142,6 @@ $(function(){
             $("#delete-budget-submit-btn").addClass("disabled-fade");
         }
     });
-
-
 
 })
 

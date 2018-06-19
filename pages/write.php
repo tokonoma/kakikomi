@@ -96,7 +96,7 @@ if(isset($getPost)){
 							<div class="tags-inner">
 								<div class="form-inline d-flex">
 									<input type="text" id="tag-input" class="tag-input" aria-label="tag input" value="" placeholder="Add tag">
-									<button type="button" class="add-tag-btn">ADD TAG</button>
+									<button type="button" class="btn add-tag-btn">ADD TAG</button>
 								</div>
 								<ul class="tag-list mt-4 list-unstyled">
 								</ul>
