@@ -11,7 +11,6 @@
     
     <!--bootstrap local-->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!--custom css if available-->
     <link href="assets/css/custom.css" rel="stylesheet">

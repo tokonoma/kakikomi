@@ -4,7 +4,7 @@ try{
     $db = new PDO($dsn);
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
-    //new or editing
+    //EDITING EXISTING
     if(isset($_GET['post'])){
     	//set variables for date title post and published bool
 		//if PUBLISHED no SAVE AS DRAFT - set variaible and do ternary to print that button
@@ -13,13 +13,21 @@ try{
 		//GET post data
 		$postUID = $_GET['post'];
 		$getPost = $db->prepare("SELECT * FROM posts WHERE uid = ?");
-		$postArray = array($postUID);
-		$getPost->execute($postArray); 
+		$getPostArray = array($postUID);
+		$getPost->execute($getPostArray);
+
+		//GET tags data
+		$getTags = $db->prepare("SELECT * FROM tags WHERE puid = ?");
+		$getTags->execute($getPostArray);
 
 		//update
+
+		//updating tags will require deleting all and rewriting them to remove any
 		
-    }
+	}
+	//IF NEW
     else{
+		//if SUBMITED
     	if(isset($_POST['published-input'])){
 			$postTitle = $_POST['title-input'];
 			$inputDate = $_POST['date-input'];
@@ -28,16 +36,30 @@ try{
 			$postBody = $_POST['post-input'];
 			$publishInput = $_POST['published-input'];
 
-			$insert = $db->prepare("INSERT INTO posts (date, title, body, published) VALUES (?, ?, ?, ?)");
-			$insertarray = array($postDate, $postTitle, $postBody, $publishInput);
-			$insert->execute($insertarray);
+			$insertpost = $db->prepare("INSERT INTO posts (date, title, body, published) VALUES (?, ?, ?, ?)");
+			$insertpostarray = array($postDate, $postTitle, $postBody, $publishInput);
+			$insertpost->execute($insertpostarray);
 
+			//this post UID
+			$savedUID = $db->lastInsertId();
+			
+			//tags
+			$tagInputJson = $_POST['tag-array-input'];
+			$tagInputArray = json_decode($tagInputJson, true);
+
+			foreach($tagInputArray as $inputTag){
+				$insertTag = $db->prepare("INSERT INTO tags (puid, name) VALUES (?, ?)");
+				$insertTagArray = array($savedUID, $inputTag);
+				$insertTag->execute($insertTagArray);
+			}
+
+			//IF PUBLISHED
 			if($publishInput){
 				$_SESSION['sessionalert'] = "postpublished";
 				header("Location: ".$baseurl);
 			}
+			//IF SAVED
 			else{
-				$savedUID = $db->lastInsertId();
 				$_SESSION['sessionalert'] = "postsaved";
 				header("Location: ".$_SERVER['REQUEST_URI']."&post=".$savedUID);
 			}
@@ -98,14 +120,29 @@ if(isset($getPost)){
 									<input type="text" id="tag-input" class="tag-input" aria-label="tag input" value="" placeholder="Add tag">
 									<button type="button" class="btn add-tag-btn">ADD TAG</button>
 								</div>
-								<ul class="tag-list mt-4 list-unstyled">
+								<ul id="tag-list" class="mt-4 list-unstyled">
+									<?php
+										if(isset($getTags)){
+											$tagArray = [];
+											foreach($getTags as $i=>$tag){
+												$i++;
+												$tagArray[] = $tag['name'];
+												echo "<li>";
+												echo $tag['name'];
+												echo "<span class='tag-delete clickable' data-tag='".$i."'>&times;</span>";
+												echo "</li>";
+											}
+											$tagJson = json_encode($tagArray);
+										}
+									?>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<input type="hidden" name="published-input" value="1">
+					<input type="hidden" name="tag-array-input" value='<?php echo $tagJson; ?>'>
 					<div class="action-bar">
-						<a href="" class="btn btn-link clear secondary">CLEAR</a>
+						<a href="<?php echo $baseurl; ?>?mode=write" class="btn btn-link clear secondary">CLEAR</a>
 						<div class="float-right">
 							<?php if(isset($thisPublished) && $thisPublished == 0): ?>
 								<button type="button" class="btn btn-link secondary save-draft-btn">SAVE DRAFT <span class="badge"><?php echo $shortDate; ?></span></button>
@@ -130,6 +167,14 @@ if(isset($getPost)){
 <!--BOTTOM-->
 
 <?php include('views/footer.php'); ?>
+
+<script>
+	<?php if(isset($tagJson)): ?>
+		var tagsArray = <?php echo $tagJson; ?>;
+	<?php else: ?>
+		var tagsArray = [];
+	<?php endif ?>
+</script>
 
 <?php include('views/commonjs.php'); ?>
 

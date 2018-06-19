@@ -278,7 +278,7 @@ input.invisible-input{
 	width: 100%;
 	z-index: 10;
 	border-radius: 4px;
-	transition: height .4s;
+	transition: height .3s;
 }
 
 .kakikomi-write .tags-container .tags-inner{
@@ -310,6 +310,10 @@ input.invisible-input{
 	border: none;
 	border-radius: 4px;
 	margin-left: 8px;
+}
+
+.kakikomi-write .tag-delete{
+	margin-left: 12px;
 }
 
 .kakikomi-write textarea.post-input{

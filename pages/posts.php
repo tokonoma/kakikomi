@@ -57,7 +57,7 @@ catch(PDOException $e){
 
 			<?php foreach($posts as $post): ?>
 			<div class="col-12 col-sm-8 offset-sm-2 post-item mb-4">
-				<h4><?php echo $post[title]; ?></h4>
+				<h4><a href="<?php echo $baseurl; ?>?mode=write&post=<?php echo $post[uid]; ?>"><?php echo $post[title]; ?></a></h4>
 				<span class="post-date"><?php echo $post[date]; ?></span>
 				<p><?php echo $post[body]; ?></p>
 				<button type="button" class="btn btn-secondary delete-post-btn mb-4" data-toggle="modal" data-target="#delete-post-modal" data-uid="<?php echo $post['uid']?>" data-title="<?php echo $post['title']?>">delete</button>

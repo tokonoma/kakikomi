@@ -93,18 +93,42 @@ $(function(){
         $(".tags-container").toggleClass('open');
     });
 
-    //tag-add-btn
+    //--tag-add-btn
+    //var tagsArray = [];
     $(document).on("click", ".add-tag-btn", function(){
-        var tagsArray = [];
+        //add to array
         var tagInput = $('input[id="tag-input"]').val();
         tagsArray.push(tagInput);
+        var numOfTags = tagsArray.length;
         $('input[id="tag-input"]').val('');
-        console.log("this is the tagsArray "+tagsArray;
 
-        // var ul = document.getElementById("list");
-        // var li = document.createElement("li");
-        // li.appendChild(document.createTextNode("Four"));
-        // ul.appendChild(li);
+        //add to list
+        var tagul = document.getElementById("tag-list");
+        var tagli = document.createElement("li");
+        var tagliContent = tagInput+" <span class='tag-delete clickable' data-tag='"+numOfTags+"'>&times;</span>";
+        tagli.innerHTML = tagliContent;
+        tagul.appendChild(tagli);
+
+        //add to form input
+        var tagArrayStr = JSON.stringify(tagsArray);
+        
+        $('input[name="tag-array-input"]').val(tagArrayStr);
+    });
+
+    //--delete tag
+    $(document).on("click", ".tag-delete", function(){
+        //remove tag from array
+        var deleteTag = $(this).data('tag');
+        var deleteIndex = parseInt(deleteTag);
+        var deleteIndex = deleteIndex - 1;
+        tagsArray.splice(deleteIndex, 1);
+        
+        //update array string in form
+        var tagArrayStr = JSON.stringify(tagsArray);
+        $('input[name="tag-array-input"]').val(tagArrayStr);
+        
+        //remove li from list
+        $(this).parent().remove();
     });
 
     //modal launch and submits
