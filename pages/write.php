@@ -6,10 +6,6 @@ try{
 	
     //EDITING EXISTING
     if(isset($_GET['post'])){
-    	//set variables for date title post and published bool
-		//if PUBLISHED no SAVE AS DRAFT - set variaible and do ternary to print that button
-		//switch to UNPUBLISH button and saves as draft!!!!
-
 		//GET post data
 		$postUID = $_GET['post'];
 		$getPost = $db->prepare("SELECT * FROM posts WHERE uid = ?");
@@ -21,9 +17,49 @@ try{
 		$getTags->execute($getPostArray);
 
 		//update
+		if(isset($_POST['published-input'])){
+			$postTitle = $_POST['title-input'];
+			$inputDate = $_POST['date-input'];
+			$formattedDate = str_replace(' • ', '-', $inputDate);
+			$postDate = date('Ymd',strtotime($formattedDate));
+			$postBody = $_POST['post-input'];
+			$publishInput = $_POST['published-input'];
 
-		//updating tags will require deleting all and rewriting them to remove any
-		
+			//update post
+			$updatePost = $db->prepare("UPDATE posts SET date = :dateBind, title = :titleBind, body = :bodyBind, published = :publishedBind WHERE uid = $postUID");
+			$updatePost->bindParam(':dateBind', $postDate, PDO::PARAM_STR);
+			$updatePost->bindParam(':titleBind', $postTitle, PDO::PARAM_STR);
+			$updatePost->bindParam(':bodyBind', $postBody, PDO::PARAM_STR);
+			$updatePost->bindParam(':publishedBind', $publishInput, PDO::PARAM_STR);
+			$updatePost->execute();
+
+			//delete all tags
+			$wipeTags = $db->prepare("DELETE FROM tags WHERE puid = ?");
+			$wipeTagsArray = array($postUID);
+			$wipeTags->execute($wipeTagsArray);
+
+			//rewrite tags
+			$tagInputJson = $_POST['tag-array-input'];
+			$tagInputArray = json_decode($tagInputJson, true);
+
+			foreach($tagInputArray as $inputTag){
+				$insertTag = $db->prepare("INSERT INTO tags (puid, name) VALUES (?, ?)");
+				$insertTagArray = array($postUID, $inputTag);
+				$insertTag->execute($insertTagArray);
+			}
+
+			//IF PUBLISHED
+			if($publishInput){
+				$_SESSION['sessionalert'] = "postpublished";
+				header("Location: ".$baseurl);
+			}
+			//IF SAVED
+			else{
+				$_SESSION['sessionalert'] = "postsaved";
+				header("Location: ".$_SERVER['REQUEST_URI']."&post=".$postUID);
+			}
+			exit();
+		}
 	}
 	//IF NEW
     else{
