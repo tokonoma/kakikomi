@@ -29,6 +29,10 @@ try{
 	}
 
     $posts = $db->query("SELECT * FROM posts ORDER BY date DESC");
+    // $getTags = $db->prepare("SELECT * FROM tags WHERE puid = ?");
+	// $getTags->execute($getPostArray);
+	//we need to create new arrays with foreachs up here so that we can produce one main array with a nest array of tags for each post
+	
 
     // close the database connection
     $db = NULL;
