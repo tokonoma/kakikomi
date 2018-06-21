@@ -29,9 +29,27 @@ try{
 	}
 
     $posts = $db->query("SELECT * FROM posts ORDER BY date DESC");
-    // $getTags = $db->prepare("SELECT * FROM tags WHERE puid = ?");
-	// $getTags->execute($getPostArray);
-	//we need to create new arrays with foreachs up here so that we can produce one main array with a nest array of tags for each post
+
+	$postsArray = [];
+	foreach($posts as $post){
+		$postArray = [];
+		$tagsArray = [];
+
+		$postArray['uid'] = $post['uid'];
+		$postArray['date'] = $post['date'];
+		$postArray['title'] = $post['title'];
+		$postArray['published'] = $post['published'];
+
+		$getTags = $db->prepare("SELECT * FROM tags WHERE puid = ?");
+		$getTagsArray = array($post['uid']);
+		$getTags->execute($getTagsArray);
+		foreach($getTags as $tag){
+			$tagsArray[] = $tag['name'];
+		}
+		$postArray['tags'] = $tagsArray;
+
+		$postsArray[] = $postArray;
+	}
 	
 
     // close the database connection
@@ -59,13 +77,18 @@ catch(PDOException $e){
 				<?php include('views/alerts.php');?>
 			</div>
 
-			<?php foreach($posts as $post): ?>
-			<div class="col-12 col-sm-8 offset-sm-2 post-item mb-4">
-				<h4><a href="<?php echo $baseurl; ?>?mode=write&post=<?php echo $post[uid]; ?>"><?php echo $post[title]; ?></a></h4>
-				<span class="post-date"><?php echo $post[date]; ?></span>
-				<p><?php echo $post[body]; ?></p>
-				<button type="button" class="btn btn-secondary delete-post-btn mb-4" data-toggle="modal" data-target="#delete-post-modal" data-uid="<?php echo $post['uid']?>" data-title="<?php echo $post['title']?>">delete</button>
-			</div>
+			<?php foreach($postsArray as $postArray): ?>
+				<div class="col-12 col-sm-8 offset-sm-2 post-item mb-4">
+					<h4><a href="<?php echo $baseurl; ?>?mode=write&post=<?php echo $postArray['uid']; ?>"><?php echo $postArray['title']; ?></a></h4>
+					<span class="post-date"><?php echo $postArray['date']; ?></span>
+					<p><?php echo $postArray['body']; ?></p>
+					<ul class="list-inline">
+						<?php foreach($postArray['tags'] as $tag): ?>
+							<li class="list-inline-item badge"><?php echo $tag; ?></li>
+						<?php endforeach; ?>
+					</ul>
+					<button type="button" class="btn btn-secondary delete-post-btn mb-4" data-toggle="modal" data-target="#delete-post-modal" data-uid="<?php echo $postArray['uid']?>" data-title="<?php echo $post['title']?>">delete</button>
+				</div>
 			<?php endforeach; ?>
 
 		</div>
