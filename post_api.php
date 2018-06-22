@@ -13,19 +13,20 @@ try{
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $postsArray = [];
+    $getBody = false;
 
     if(isset($_GET['post'])){
         $getUID = $_GET['post'];
         $posts = $db->prepare("SELECT * FROM posts WHERE uid = ?");
 		$getPostArray = array($getUID);
 		$posts->execute($getPostArray);
+        $getBody = true;
     }
     elseif(isset($_GET['search'])){
-        $getQuery = $_GET['search'];
+        $getQuery = "%".$_GET['search']."%";
         $posts = $db->prepare("SELECT * FROM posts WHERE body LIKE ?");
 		$getPostArray = array($getQuery);
         $posts->execute($getPostArray);
-        //not working
     }
     else{
         $posts = $db->query("SELECT * FROM posts ORDER BY date DESC");
@@ -39,6 +40,9 @@ try{
         $postArray['date'] = $post['date'];
         $postArray['title'] = $post['title'];
         $postArray['published'] = $post['published'];
+        if($getBody == true){
+            $postArray['body'] = $post['body'];  
+        }
 
         $getTags = $db->prepare("SELECT * FROM tags WHERE puid = ?");
         $getTagsArray = array($post['uid']);
