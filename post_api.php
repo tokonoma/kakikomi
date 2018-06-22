@@ -17,19 +17,32 @@ try{
 
     if(isset($_GET['post'])){
         $getUID = $_GET['post'];
-        $posts = $db->prepare("SELECT * FROM posts WHERE uid = ?");
+        $posts = $db->prepare("SELECT * FROM posts WHERE uid = ? AND published = 1");
 		$getPostArray = array($getUID);
 		$posts->execute($getPostArray);
         $getBody = true;
     }
     elseif(isset($_GET['search'])){
-        $getQuery = "%".$_GET['search']."%";
-        $posts = $db->prepare("SELECT * FROM posts WHERE body LIKE ?");
-		$getPostArray = array($getQuery);
-        $posts->execute($getPostArray);
+        //use this for prepping search input for URL
+        //--strip all non alphanumeric characters
+        //$alphaNumOnly = preg_replace("/[^A-Za-z0-9 ]/", '', $_GET['search']);
+        //--lastly guarentee url safe with urlencode - this will auto space->plus sign +
+        //$urlEncoded = urlencode($alphaNumOnly);
+
+        $queryArray = explode(' ', $_GET['search']);
+
+        $postsSQL="SELECT uid, date, title FROM posts WHERE ";
+        $sql_and="";
+        foreach($queryArray as $query){
+            $wildcardQuery = "%".$query."%";
+            $postsSQL .= $sql_and . "(body LIKE '$wildcardQuery' OR title LIKE '$wildcardQuery')";
+            $sql_and=" AND ";
+        }
+        $postsSQL .= " AND published = 1 ORDER BY date DESC";
+        $posts = $db->query($postsSQL);
     }
     else{
-        $posts = $db->query("SELECT * FROM posts ORDER BY date DESC");
+        $posts = $db->query("SELECT uid, date, title FROM posts WHERE published = 1 ORDER BY date DESC");
     }
 
     foreach($posts as $post){
@@ -39,9 +52,8 @@ try{
         $postArray['uid'] = $post['uid'];
         $postArray['date'] = $post['date'];
         $postArray['title'] = $post['title'];
-        $postArray['published'] = $post['published'];
         if($getBody == true){
-            $postArray['body'] = $post['body'];  
+            $postArray['body'] = $post['body'];
         }
 
         $getTags = $db->prepare("SELECT * FROM tags WHERE puid = ?");

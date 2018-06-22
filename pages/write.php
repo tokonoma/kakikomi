@@ -142,6 +142,10 @@ if(isset($getPost)){
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-sm-8 offset-sm-2">
+				<?php include('views/alerts.php');?>
+			</div>
+			
+			<div class="col-12 col-sm-8 offset-sm-2">
 				<form id="write-form" autocomplete="off" method="POST" action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>">
 					<input type="text" id="title-input" name="title-input" class="title-input" aria-label="title input" value="<?php echo $thisTitle; ?>" placeholder="add a title for your post">
 					<input class="invisible-input post-date" name="date-input" value="<?php echo $thisDate; ?>" placeholder="add a publish date">
