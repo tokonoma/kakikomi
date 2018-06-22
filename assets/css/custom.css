@@ -141,13 +141,14 @@ body.kakikomi{
 	margin-top: 24px;
 }
 
-.kakikomi header h1{
+.kakikomi header h1 a{
 	font-family: 'Playfair Display', serif;
 	color: #C6D5DD;
 	font-weight: 900;
 	font-size: 36px;
 	line-height: 1;
 	letter-spacing: 4px;
+	text-decoration: none;
 }
 
 .kaki-logo{
@@ -188,6 +189,10 @@ body.kakikomi{
 	right: 0px;
 	top: 0px;
 	padding: 24px;
+}
+
+#kakikomi-menu .menu-inner a, #kakikomi-menu .menu-inner .btn-link{
+	color: #ffffff;
 }
 
 #kakikomi-menu .menu-logo{

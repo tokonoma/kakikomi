@@ -5,10 +5,11 @@
 
 <?php include('views/head.php'); ?>
 
-<?php include('views/nav.php'); ?>
+<?php include('views/header.php'); ?>
 
 <?php include('views/user_settings_html.php'); ?>
 
+<?php include('views/menu.php'); ?>
 
 <!--BOTTOM-->
 
