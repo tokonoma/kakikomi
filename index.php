@@ -95,32 +95,8 @@ if(isset($_SESSION['expire']) && time() > $_SESSION['expire'] && $_SESSION['stay
 }
 
 //are you logged in?
-if(!isset($_SESSION['email'])){
-    //no? do users even exist yet?
-    try{
-        $db = new PDO($dsn);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $numberofusers = $db->query("SELECT COUNT(*) FROM users")->fetchColumn();
-        $db = NULL;
-    }
-    catch(PDOException $e){
-        //$_SESSION['sessionalert'] = "loginfail";
-        //header("Location: ".$baseurl);
-        echo $e;
-        //exit();
-    }
-
-    if($numberofusers < 1){
-        //first time
-        $_SESSION['firstuser'] = true;
-        include('pages/startup.php');
-    }
-    else{
-        include('pages/auth.php');
-    }
-}
-else{
+if(isset($_SESSION['email'])){
+    //yes?
     $_SESSION['expire'] = time()+60*360; //reset session expire everytime the user uses the site
 
     if(count($_GET)) {
@@ -144,5 +120,41 @@ else{
     }
     else{
         include('pages/posts.php');
+    }
+}
+elseif(isset($_GET['api'])){
+    $api = $_GET['api'];
+    switch ($api){
+        case 'json':
+            include('system/json_api.php');
+            break;
+        default:
+            include('system/json_api.php');
+            break;
+    }
+}
+else{
+    //not logged in? do users even exist yet?
+    try{
+        $db = new PDO($dsn);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $numberofusers = $db->query("SELECT COUNT(*) FROM users")->fetchColumn();
+        $db = NULL;
+    }
+    catch(PDOException $e){
+        //$_SESSION['sessionalert'] = "loginfail";
+        //header("Location: ".$baseurl);
+        echo $e;
+        //exit();
+    }
+
+    if($numberofusers < 1){
+        //first time
+        $_SESSION['firstuser'] = true;
+        include('pages/startup.php');
+    }
+    else{
+        include('pages/auth.php');
     }
 }
