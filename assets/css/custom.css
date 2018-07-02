@@ -264,7 +264,7 @@ input.invisible-input{
 	font-weight: 300;
 }
 
-.kakikomi-write #tags-btn{
+.kakikomi-write .write-toolbar-item{
 	margin: 12px 0px;
 }
 
@@ -304,7 +304,8 @@ input.invisible-input{
 	background: #88A2AA;
 	border: none;
 	border-radius: 4px;
-	flex: 2;
+	flex: 1;
+	min-width: 0px;
 }
 
 .kakikomi-write .add-tag-btn{
@@ -341,7 +342,6 @@ input.invisible-input{
 .kakikomi .btn.btn-link{
 	padding: 0px;
 	font-weight: 400;
-	margin-right: 48px;
 }
 
 .kakikomi .btn.btn-link:last-child{
@@ -350,6 +350,10 @@ input.invisible-input{
 
 .kakikomi .btn.btn-link.secondary{
 	color: #88A2AA;
+}
+
+.kakikomi .btn.save-draft-btn{
+	margin-right: 32px;
 }
 
 .kakikomi .btn.btn-link.submit{

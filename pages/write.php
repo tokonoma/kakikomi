@@ -149,8 +149,11 @@ if(isset($getPost)){
 				<form id="write-form" autocomplete="off" method="POST" action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>">
 					<input type="text" id="title-input" name="title-input" class="title-input" aria-label="title input" value="<?php echo $thisTitle; ?>" placeholder="add a title for your post">
 					<input class="invisible-input post-date" name="date-input" value="<?php echo $thisDate; ?>" placeholder="add a publish date">
-					<div id="tags-btn" class="d-inline-block float-right clickable">
+					<div id="tags-btn" class="d-inline-block float-right clickable write-toolbar-item">
 						<img src="assets/images/tags.svg">
+					</div>
+					<div class="d-inline-block mr-5 float-right clickable write-toolbar-item">	
+						<i class="fas fa-images fa-lg"></i>
 					</div>
 					<div class="body-container">
 						<textarea id="post-input" name="post-input" class="post-input" rows="3" placeholder="write your post here"><?php echo $thisBody; ?></textarea>
