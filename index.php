@@ -122,17 +122,6 @@ if(isset($_SESSION['email'])){
         include('pages/posts.php');
     }
 }
-elseif(isset($_GET['api'])){
-    $api = $_GET['api'];
-    switch ($api){
-        case 'json':
-            include('system/json_api.php');
-            break;
-        default:
-            include('system/json_api.php');
-            break;
-    }
-}
 else{
     //not logged in? do users even exist yet?
     try{
@@ -156,5 +145,17 @@ else{
     }
     else{
         include('pages/auth.php');
+    }
+}
+
+if(isset($_GET['api'])){
+    $api = $_GET['api'];
+    switch ($api){
+        case 'json':
+            include('system/json_api.php');
+            break;
+        default:
+            include('system/json_api.php');
+            break;
     }
 }

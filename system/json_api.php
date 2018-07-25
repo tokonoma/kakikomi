@@ -21,7 +21,7 @@ try{
         $getBody = true;
     }
     elseif(isset($_GET['search'])){
-        //use this for prepping search input for URL
+        //use this for prepping search input for URL FROM frontend calling the API
         //--strip all non alphanumeric characters
         //$alphaNumOnly = preg_replace("/[^A-Za-z0-9 ]/", '', $_GET['search']);
         //--lastly guarentee url safe with urlencode - this will auto space->plus sign +
