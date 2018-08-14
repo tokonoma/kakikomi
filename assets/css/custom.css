@@ -373,6 +373,12 @@ input.invisible-input{
 	font-weight: 400;
 }
 
+.kakikomi .badge.badge--fill{
+	border: solid 1px #88A2AA;
+	background: #88A2AA;
+	color: #fff;
+}
+
 .kakikomi-posts .post-date{
 	font-size: 14px;
 }

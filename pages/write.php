@@ -1,5 +1,37 @@
 <?php
 
+require_once "system/bulletproof.php";
+
+$image = new Bulletproof\Image($_FILES);
+
+if($image["pictures"]){
+	$image->setLocation('uploads');
+	$upload = $image->upload();
+
+	if($upload){
+		echo $upload->getFullPath();
+		//FIRST move this down into the try/catch
+		//SECOND save filename to uploads table with post UID and filename
+		// - make an uploads table
+		// -normalize upload file name
+
+		//add place where I check for uploads with this posts UID and print them
+		//probably like tags! JUST LIKE TAGS, upload form in drawer
+		//then list of uploads
+
+		//figure out how to reference image url in markdown for rendering...
+
+		//$_SESSION['sessionalert'] = "uploadok";
+		//header("Location: ".$baseurl);
+
+	}else{
+		echo $image->getError();
+		//$_SESSION['sessionalert'] = "uploaderror";
+		//header("Location: ".$baseurl);
+	}
+	exit();
+}
+
 try{
     $db = new PDO($dsn);
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -202,7 +234,17 @@ if(isset($getPost)){
 				</form>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-12">
+				<form method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+					<input type="file" name="pictures" accept="image/*"/>
+					<input type="submit" value="upload" class="btn btn-link submit"/>
+				</form>
+			</div>
+		</div>
 	</div>
+	
 </main>
 
 <?php include('views/menu.php'); ?>

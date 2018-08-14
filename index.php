@@ -109,11 +109,17 @@ if(isset($_SESSION['email'])){
                 case 'write':
                     include('pages/write.php');
                     break;
+                case 'posts':
+                    include('pages/posts.php');
+                    break;
                 default:
                     include('pages/404.php');
                     break;
             }
         }
+        // elseif(isset($_GET['api'])){
+        //     //carry on
+        // }
         else{
             include('pages/404.php');
         }
@@ -148,14 +154,14 @@ else{
     }
 }
 
-if(isset($_GET['api'])){
-    $api = $_GET['api'];
-    switch ($api){
-        case 'json':
-            include('system/json_api.php');
-            break;
-        default:
-            include('system/json_api.php');
-            break;
-    }
-}
+// if(isset($_GET['api'])){
+//     $api = $_GET['api'];
+//     switch ($api){
+//         case 'json':
+//             include('system/json_api.php');
+//             break;
+//         default:
+//             include('system/json_api.php');
+//             break;
+//     }
+// }

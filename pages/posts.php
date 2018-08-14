@@ -50,7 +50,6 @@ try{
 
 		$postsArray[] = $postArray;
 	}
-	
 
     // close the database connection
     $db = NULL;
@@ -79,10 +78,17 @@ catch(PDOException $e){
 
 			<?php foreach($postsArray as $postArray): ?>
 				<div class="col-12 col-sm-8 offset-sm-2 post-item mb-4">
-					<h4><a href="<?php echo $baseurl; ?>?mode=write&post=<?php echo $postArray['uid']; ?>"><?php echo $postArray['title']; ?></a></h4>
+					<h4>
+						<a href="<?php echo $baseurl; ?>?mode=write&post=<?php echo $postArray['uid']; ?>"><?php echo $postArray['title']; ?></a>
+					</h4>
 					<span class="post-date"><?php echo $postArray['date']; ?></span>
 					<p><?php echo $postArray['body']; ?></p>
 					<ul class="list-inline">
+						<?php if($postArray['published']): ?>
+							<li class="badge badge--fill">PUBLISHED</li>
+						<?php else: ?>
+							<li class="badge">DRAFT</li>
+						<?php endif; ?>
 						<?php foreach($postArray['tags'] as $tag): ?>
 							<li class="list-inline-item badge"><?php echo $tag; ?></li>
 						<?php endforeach; ?>
@@ -94,7 +100,6 @@ catch(PDOException $e){
 		</div>
 	</div>
 </main>
-
 
 <?php include('views/menu.php'); ?>
 

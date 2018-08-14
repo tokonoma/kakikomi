@@ -22,18 +22,22 @@ $baseurl .= $cleanurizero;
 
 //this is for developing locally, for example, with MAMP...
 //You may need to add your projects directory to the path to the database.
-if(in_array($_SERVER['REMOTE_ADDR'], $localips)){
-	//add your projects directory name here...
-	$projectdirectory = "kakikomi";
-	$dbrelativepath = "/".$projectdirectory."/system/data/database.sqlite";
-}
-else{
-	$dbrelativepath = $cleanurizero."system/data/database.sqlite";
+// if(in_array($_SERVER['REMOTE_ADDR'], $localips)){
+// 	//add your projects directory name here...
+// 	$projectdirectory = "kakikomi";
+// 	$dbrelativepath = "/".$projectdirectory."/system/data/database.sqlite";
+// 	$DBPath = $_SERVER['DOCUMENT_ROOT'].$dbrelativepath;
+// }
+// else{
+// 	$systemDIR = __DIR__;
+// 	$DBPath = $systemDIR."/data/database.sqlite";
+// }
 
-}
+$systemDIR = __DIR__;
+$DBPath = $systemDIR."/data/database.sqlite";
 
 //sqlite DB
-define('DB_PATH', $_SERVER['DOCUMENT_ROOT'].$dbrelativepath);
+define('DB_PATH', $DBPath);
 $dsn = "sqlite:".DB_PATH;
 
 //postgres DB
