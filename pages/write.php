@@ -13,13 +13,15 @@ if($image["pictures"]){
 		//FIRST move this down into the try/catch
 		//SECOND save filename to uploads table with post UID and filename
 		// - make an uploads table
-		// -normalize upload file name
+		// - normalize upload file name
 
 		//add place where I check for uploads with this posts UID and print them
 		//probably like tags! JUST LIKE TAGS, upload form in drawer
 		//then list of uploads
 
 		//figure out how to reference image url in markdown for rendering...
+		//produce full path (www....) for image - I think bulletproof will give you this
+		//use js to add to bottom of textarea in markdown format
 
 		//$_SESSION['sessionalert'] = "uploadok";
 		//header("Location: ".$baseurl);
