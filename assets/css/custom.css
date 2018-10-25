@@ -199,6 +199,33 @@ body.kakikomi{
 	float: right;
 }
 
+.menu-hello{
+	font-size: 18px;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.menu-link{
+	font-size: 16px;
+	padding-left: 12px;
+	border-left: solid 2px rgba(255,255,255,.4)
+}
+
+.kakikomi .menu-link.btn.btn-link{
+	border: none;
+	border-left: solid 2px rgba(255,255,255,.4);
+	padding-left: 12px;
+	border-radius: 0px;
+	transition: none;
+	font-weight: 300;
+	text-decoration: none;
+}
+
+.menu-link:hover, .kakikomi .menu-link.btn.btn-link:hover{
+	border-color: rgba(255,255,255,.8);
+	text-decoration: none;
+}
+
 #click-away.on{
 	position: fixed;
 	z-index: 1;
